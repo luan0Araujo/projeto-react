@@ -1,0 +1,11 @@
+body{
+    
+    text-align: center;
+}
+#qq{
+    height: 150px;
+    left: 200px;
+    top: 268px;
+    background-image: linear-gradient(180deg, #B8F09D, #ffffff);
+    
+}

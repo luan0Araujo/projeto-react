@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+form {
+    position: absolute;
+    width: 408px;
+    height: 268.63px;
+    left: 98px;
+    top: 200px;
+    
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.email {
+    position: absolute;
+    height: 25.28px;
+    left: 50px;
+    top: 59px;
+
+}
+
+.senha {
+    position: absolute;
+    height: 25.28px;
+    left: 50px;
+    top: 118px;
+}
+
+input {
+    background: rgba(184, 240, 157, 0.7);
+    border-radius: 10px;
+    height: 20px;
+}
+
+button {
+
+    background: #94FC63;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2), 0px 1px 18px rgba(0, 0, 0, 0.12), 0px 6px 10px rgba(0, 0, 0, 0.14);
+    border-radius: 10px;
+}
+
+.entrar {
+    position: absolute;
+    width: 116.93px;
+    height: 40.45px;
+    left: 252.19px;
+    top: 187.72px;
+}
+.registrar {
+
+position: absolute;
+width: 116.93px;
+height: 40.45px;
+left: 50px;
+top: 188px;
+}
+
+.letra {
+    position: absolute;
+    width: 233.86px;
+    height: 33.5px;
+    left: 135.26px;
+    top: 113.77px;
+
+    background: rgba(184, 240, 157, 0.7);
+    border-radius: 10px;
+}
