@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes as Switch, Navigate } from "react-router-dom";
 
-import { Dashboard, Login } from "../pages"; 
+import { Dashboard, Login, CadastroUsuario, Menu} from '../pages'; 
 
 export const Routes = () => {
 
@@ -9,7 +9,8 @@ export const Routes = () => {
             <Switch>
                 <Route path="/pagina-inicial" element = {<Dashboard />} />
                 <Route path="/entrar" element = {<Login />} />
-
+                <Route path="/cadastro-usuario" element = {<CadastroUsuario />} />
+                <Route path="/menu" element = {<Menu />} />
                 <Route path= "*" element = {<Navigate to="/pagina-inicial" />}/>
             </Switch>
         </BrowserRouter>

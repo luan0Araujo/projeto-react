@@ -1,12 +1,12 @@
 import { useCallback, useState } from "react";
-import './cs.css'
+
 
 export const Login = () => {
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
     
     const handleEntrar = useCallback(() => {
-        if(email.length && password.length === 0 ) return;
+        if(email === ''  || password === '') return;
         console.log(email)
         console.log(password)
     }, [email, password])

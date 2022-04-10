@@ -1,0 +1,20 @@
+body{
+
+}
+.menu{
+    position: absolute;
+    width: 600px;
+    height: 1194px;
+    left: 98px;
+    top: 200px;
+    
+}
+.formulario{
+    
+    position: absolute;
+    width: 570px;
+    height: 1194px;
+    left: 698px;
+    top: 200px;
+    
+}
