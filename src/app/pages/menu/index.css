@@ -1,20 +1,46 @@
-body{
 
+li {
+    list-style-type: none;
+    background: #94FC63;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2), 0px 1px 18px rgba(0, 0, 0, 0.12), 0px 6px 10px rgba(0, 0, 0, 0.14);
+    border-radius: 10px;
+    width: 170px;
+    height: 30px;
+    margin: 10px;
+    text-align: left;
+ 
 }
+li:hover {
+    box-shadow: 0px;
+    background-color:white;
+}
+
+a {
+    position: absolute;
+    text-decoration: none;
+    padding: 5px;
+    color: black;
+}
+
+button {
+    box-shadow: 0px;
+    background-color: white; 
+    color: black; 
+    box-shadow: 0px;
+    
+    
+  }
+  
+button:hover {
+    box-shadow: 0px;
+    background-color: #94FC63;
+}
+  
 .menu{
     position: absolute;
-    width: 600px;
-    height: 1194px;
-    left: 98px;
-    top: 200px;
+    width: 300px;
     
-}
-.formulario{
-    
-    position: absolute;
-    width: 570px;
-    height: 1194px;
-    left: 698px;
+    left: 50px;
     top: 200px;
     
 }

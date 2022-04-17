@@ -1,23 +1,8 @@
-import { useState } from "react";
-import { CadastroAutomovel } from "../automovel/cadastroAutomovel/CadastroAutomovel";
-import { CadastroUsuario } from "../usuario/cadastroUsuario/CadastroUsuario";
+
 import './index.css';
 
 
 export const Menu = () => {
-
-
-    const [showElement, setShowElement] = useState(false)
-
-    const showOrHide = () => {
-        if(showElement === true){
-            setShowElement(false)
-
-        }
-        else{
-            setShowElement(true)
-        }
-    }
 
     return (
         <div>
@@ -33,30 +18,25 @@ export const Menu = () => {
 
                     <li><a>Automovel</a></li>
                         <ul>
-                            <li><button type="button" onClick={showOrHide}>Cadastrar</button></li>
+                            <li><a href="http://localhost:3000/cadastro-automovel">Cadastro</a></li>
                             <li><a href="#">Listar</a></li>
                         </ul>
-                    <li><a>Endereço</a>
+                    <li><a>Endereço</a></li>
                         <ul>
-                            <li><a href="#">Cadastrar</a></li>
+                            <li><a href="http://localhost:3000/cadastro-endereco">Cadastrar</a></li>
                             <li><a href="#">Buscar Endereço</a></li>
                         </ul>
-                    </li>
-                    <li><a>Usuario</a>
+                    
+                    <li><a>Usuario</a></li>
                         <ul>
-                            <li ><button type="button" onClick={showOrHide}>Cadastrar</button></li>
-                            <li><a>Listar</a></li>
+                            <li ><a href="http://localhost:3000/cadastro-usuario">Cadastro</a></li>
+                            <li><a  href="#">Listar</a></li>
                         </ul>
-                    </li>
+                    
                     <li><a href="http://localhost:3000/entrar">Sair</a></li>
                 </ul>
             </form>
-            <div className="formulario">
-                <div className="cadastro">
-                    { showElement ? <CadastroUsuario ></CadastroUsuario>: null }
-                </div>
-                { showElement ? <CadastroAutomovel></CadastroAutomovel> : null }
-            </div>
+
         </div>
     );
 }

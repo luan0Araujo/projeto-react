@@ -1,63 +1,50 @@
-import { useCallback, useState } from "react";
+import { useForm } from "react-hook-form";
 import api from "../../../shared/Api/Api";
+import { Menu } from "../../menu/Menu";
 
 
 export const CadastroAutomovel = () => {
 
+    const {register, handleSubmit} = useForm();
 
-    const [placa, setPlaca] = useState('')
-    const [modelo, setModelo] = useState('')
-    const [marca, setMarca] = useState('')
-    const [cor, setCor] = useState('')
-    const [ano, setAno] = useState('')
-    const [renavam, setRenavam] = useState('')
-
-    const handleCadastrar = useCallback(() => {
-        api.post('/usuarios', {
-            placa: placa,
-            renavam: renavam,
-            marca: marca,
-            ano: ano, 
-          })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        
-    }, [placa, marca, ano, renavam]);
+    const onSubmit = (data: any) => {
+        //comunicar com a api
+        console.log(data)
+    }
+    
     return (
         <div>
-            <form>
+            <div>
+                <Menu></Menu>
+            </div>
+            
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <label>
                     <span>Placa </span>
-                    <input value={placa} onChange={e => setPlaca(e.target.value)}/>
+                    <input {...register("plate")}/>
                 </label>
                 <label >
                     <span>Modelo </span>
-                    <input value={modelo} onChange={e => setModelo(e.target.value)}/>
+                    <input {...register("model")}/>
                 </label>
                 <label >
-                    <span>CPF </span>
-                    <input value={marca} onChange={e => setMarca(e.target.value)}/>
+                    <span>Marca </span>
+                    <input {...register("brand")}/>
                 </label>
                 <label >
-                    <span>Data de Nascimento </span>
-                    <input value={cor} onChange={e => setCor(e.target.value)}/>
+                    <span>Cor </span>
+                    <input {...register("color")}/>
                 </label>
                 <label >
-                    <span>Email </span>
-                    <input value={ano} onChange={e => setAno(e.target.value)}/>
+                    <span>Ano </span>
+                    <input {...register("year")}/>
                 </label>
                 <label>
-                    <span>Senha </span>
-                    <input value={renavam} onChange={e => setRenavam(e.target.value)}/>
+                    <span>Renavam </span>
+                    <input {...register("renavam")}/>
                 </label>
 
-                <button type="button" onClick={handleCadastrar}>
-                    Registrar
-                </button>
+                <button>Registrar</button>
             </form>
         </div>
     );

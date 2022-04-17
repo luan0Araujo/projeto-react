@@ -1,9 +1,16 @@
+import './index.css'
 
 import { Routes } from "./routes";
 export const App =() => {
   return (
 
-     <Routes/>
+    <div>
+      <div id='qq'>
+
+      </div>
+      <Routes/>
+    </div>
+     
   );
 }
 

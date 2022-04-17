@@ -1,34 +1,30 @@
-import { useCallback, useState } from "react";
+
+import { useForm } from "react-hook-form";
+import './csLogin.css'
 
 
 export const Login = () => {
-    const [email,setEmail] = useState('')
-    const [password,setPassword] = useState('')
-    
-    const handleEntrar = useCallback(() => {
-        if(email === ''  || password === '') return;
-        console.log(email)
-        console.log(password)
-    }, [email, password])
+    const {register, handleSubmit} = useForm();
+
+    const onSubmit = (data: any) => {
+        console.log(data)
+    }
     
     return (
         <div>
-            <form>
+            <form className="formLogin" onSubmit={handleSubmit(onSubmit)}>
                 <label className="email">
                     <span>Email </span>
-                    <input value={email} onChange={e => setEmail(e.target.value)}/>
+                    <input {...register("email")}/>
                 </label>
 
                 <label className="senha">
                     <span>Senha </span>
-                    <input type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+                    <input type="password"  {...register("password")}/>
                 </label>
 
-                <button className="entrar" type="button" onClick={handleEntrar}>
+                <button className="entrar" >
                     Entrar
-                </button>
-                <button className="registrar" type="button">
-                    Registrar
                 </button>
             </form>
         </div>

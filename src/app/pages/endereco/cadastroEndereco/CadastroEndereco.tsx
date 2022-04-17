@@ -2,15 +2,16 @@ import { useForm } from "react-hook-form";
 import api from "../../../shared/Api/Api";
 import { Menu } from "../../menu/Menu";
 
-export const CadastroUsuario = () => {
-    
+
+export const CadastroEndereco = () => {
+
     const {register, handleSubmit} = useForm();
 
     const onSubmit = (data: any) => {
         //comunicar com a api
         console.log(data)
     }
-    
+
     return (
         <div>
             <div>
@@ -19,32 +20,36 @@ export const CadastroUsuario = () => {
             
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label>
-                    <span>Nome </span>
-                    <input {...register("name")}/>
+                    <span>CEP</span>
+                    <input {...register("cep")}/>
+                </label>
+                <label >
+                    <span>Rua </span>
+                    <input {...register("street")}/>
+                </label>
+                <label >
+                    <span>Numero </span>
+                    <input {...register("number")}/>
+                </label>
+                <label >
+                    <span>Complemento </span>
+                    <input {...register("supplement")}/>
+                </label>
+                <label >
+                    <span>Bairro </span>
+                    <input {...register("district")}/>
                 </label>
                 <label>
-                    <span>RG </span>
-                    <input {...register("rg")}/>
-                </label>
-                <label >
-                    <span>CPF </span>
-                    <input {...register("cpf")}/>
-                </label>
-                <label >
-                    <span>Nascimento </span>
-                    <input {...register("birth_date")}/>
-                </label>
-                <label >
-                    <span>Email </span>
-                    <input {...register("email")}/>
+                    <span>Cidade </span>
+                    <input {...register("town")}/>
                 </label>
                 <label>
-                    <span>Senha </span>
-                    <input {...register("password")}/>
+                    <span>Estado </span>
+                    <input {...register("uf")}/>
                 </label>
 
                 <button>Registrar</button>
             </form>
         </div>
     );
-};
+}
