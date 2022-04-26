@@ -2,6 +2,7 @@
   "name": "aulareact",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://ngn-api.herokuapp.com",
   "dependencies": {
     "axios": "^0.26.1",
     "react": "^17.0.2",

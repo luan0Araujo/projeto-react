@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
-import api from "../../../shared/Api/Api";
+import {api} from "../../../shared/Api/Api";
 import { Menu } from "../../menu/Menu";
+import { ListaAutomovel } from "../listaAutomovel/ListaAutomovel";
 
 
 export const CadastroAutomovel = () => {
@@ -8,7 +9,10 @@ export const CadastroAutomovel = () => {
     const {register, handleSubmit} = useForm();
 
     const onSubmit = (data: any) => {
-        //comunicar com a api
+        api.post("/automovel",data)
+        .catch((err) => {
+          console.error("ops! ocorreu um erro" + err);
+        });
         console.log(data)
     }
     
@@ -16,6 +20,9 @@ export const CadastroAutomovel = () => {
         <div>
             <div>
                 <Menu></Menu>
+            </div>
+            <div>
+                <ListaAutomovel></ListaAutomovel>
             </div>
             
             <form onSubmit={handleSubmit(onSubmit)}>

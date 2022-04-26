@@ -5,9 +5,7 @@ export const App =() => {
   return (
 
     <div>
-      <div id='qq'>
-
-      </div>
+      <div id='banner'></div>
       <Routes/>
     </div>
      

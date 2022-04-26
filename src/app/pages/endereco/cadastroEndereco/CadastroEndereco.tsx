@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import api from "../../../shared/Api/Api";
+import {api} from "../../../shared/Api/Api";
 import { Menu } from "../../menu/Menu";
 
 

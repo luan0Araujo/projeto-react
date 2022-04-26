@@ -1,41 +1,52 @@
 
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/auth';
 import './index.css';
 
 
 export const Menu = () => {
 
+    const { logout } = useContext(AuthContext);
+    const handleLogout = () => {
+        logout();
+    }
+
     return (
         <div>
-            <form className="menu">
-                <ul id="nav">
-                    <li><a>Ordem</a></li>
+            
+                <ul className='menu'>
+                    <li><a href='#'>Ordem</a>
                         <ul>
                             <li><a href="#">Nova Ordem</a></li>
                             <li><a href="#">Ordens Finalizadas</a></li>
                             <li><a href="#">Ordens em Aberto</a></li>
                             <li><a href="#">Ordens Canceladas</a></li>
                         </ul>
+                    </li>
 
-                    <li><a>Automovel</a></li>
+                    <li><a href='#'>Cadastro</a>
                         <ul>
-                            <li><a href="http://localhost:3000/cadastro-automovel">Cadastro</a></li>
-                            <li><a href="#">Listar</a></li>
+                            <li><a href="http://localhost:3000/cadastro-automovel">Automovel</a></li>
+                            <li><a href="http://localhost:3000/cadastro-endereco">Endereço</a></li>
+                            <li ><a href="http://localhost:3000/cadastro-usuario">Usuario</a></li>
                         </ul>
-                    <li><a>Endereço</a></li>
+                    </li>
+
+                    <li><a href='#'>Endereço</a>
                         <ul>
-                            <li><a href="http://localhost:3000/cadastro-endereco">Cadastrar</a></li>
-                            <li><a href="#">Buscar Endereço</a></li>
+
                         </ul>
+                    </li>
                     
-                    <li><a>Usuario</a></li>
+                    <li><a href='#'>Usuario</a>
                         <ul>
-                            <li ><a href="http://localhost:3000/cadastro-usuario">Cadastro</a></li>
-                            <li><a  href="#">Listar</a></li>
+
                         </ul>
+                    </li>
                     
-                    <li><a href="http://localhost:3000/entrar">Sair</a></li>
+                    <li><button className='logout' onClick={handleLogout}>Sair</button></li>
                 </ul>
-            </form>
+            
 
         </div>
     );

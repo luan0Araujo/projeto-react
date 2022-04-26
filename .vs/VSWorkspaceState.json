@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\pages",
+    "\\src\\app\\pages\\automovel",
+    "\\src\\app\\pages\\automovel\\cadastroAutomovel"
   ],
+  "SelectedNode": "\\src\\app\\pages\\automovel\\cadastroAutomovel\\CadastroAutomovel.tsx",
   "PreviewInSolutionExplorer": false
 }

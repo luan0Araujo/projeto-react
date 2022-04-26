@@ -1,7 +1,16 @@
 import axios from "axios";
 
-const api = axios.create({
-    baseURL: 'http://localhost:8080'
+export const api = axios.create({
+
+    headers: {
+        'Access-Control-Allow-Origin': '*'
+    },
+    
 });
 
-export default api
+export const createSession = async (data:any) => {
+    return api.post("/login", data).catch(function (error) {
+          return error.response
+      });
+}
+

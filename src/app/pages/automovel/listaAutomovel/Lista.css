@@ -1,0 +1,42 @@
+.aa{
+    position: absolute;
+    width: 40%;
+    height: 300px;
+    left: 44%;
+    top: 28%;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2), 0px 1px 18px rgba(0, 0, 0, 0.12), 0px 6px 10px rgba(0, 0, 0, 0.14);
+    border: 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    overflow-x: auto;
+
+}
+.aa input{
+    background-color: aliceblue;
+    position:relative;
+    width: 95%;
+    top:5%;
+    left: 2%;
+    
+}
+table{
+    border-collapse: collapse;
+    position:relative;
+    top:10%;
+    width: 96%;
+    left: 2%;
+
+}
+td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+tr:nth-child(even){background-color: #f2f2f2;}
+tr:hover {background-color: #ddd;}
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #B8F09D;
+    
+  }

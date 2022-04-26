@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import api from "../../../shared/Api/Api";
+import {api} from "../../../shared/Api/Api";
 import { Menu } from "../../menu/Menu";
 
 export const CadastroUsuario = () => {
@@ -7,8 +7,12 @@ export const CadastroUsuario = () => {
     const {register, handleSubmit} = useForm();
 
     const onSubmit = (data: any) => {
-        //comunicar com a api
+        api.post("/usuarios",data)
+        .catch((err) => {
+          console.error("ops! ocorreu um erro" + err);
+        });
         console.log(data)
+    
     }
     
     return (
@@ -22,18 +26,7 @@ export const CadastroUsuario = () => {
                     <span>Nome </span>
                     <input {...register("name")}/>
                 </label>
-                <label>
-                    <span>RG </span>
-                    <input {...register("rg")}/>
-                </label>
-                <label >
-                    <span>CPF </span>
-                    <input {...register("cpf")}/>
-                </label>
-                <label >
-                    <span>Nascimento </span>
-                    <input {...register("birth_date")}/>
-                </label>
+
                 <label >
                     <span>Email </span>
                     <input {...register("email")}/>
@@ -41,6 +34,10 @@ export const CadastroUsuario = () => {
                 <label>
                     <span>Senha </span>
                     <input {...register("password")}/>
+                </label>
+                <label >
+                    <span>CPF </span>
+                    <input {...register("cpf")}/>
                 </label>
 
                 <button>Registrar</button>

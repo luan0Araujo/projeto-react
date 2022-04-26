@@ -1,17 +1,24 @@
 
 import { useForm } from "react-hook-form";
+import {api} from "../../shared/Api/Api";
 import './csLogin.css'
-
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/auth";
 
 export const Login = () => {
     const {register, handleSubmit} = useForm();
+    const { authenticated, login} = useContext(AuthContext);
 
     const onSubmit = (data: any) => {
-        console.log(data)
+
+        const aaa = login(data);
+        console.log("Status123: ",aaa)
     }
+
     
     return (
-        <div>
+        <div className="login">
+            
             <form className="formLogin" onSubmit={handleSubmit(onSubmit)}>
                 <label className="email">
                     <span>Email </span>
