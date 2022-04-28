@@ -1,17 +1,9 @@
 *{margin: 0; padding: 0;}
 
-button {
-    box-shadow: 0px;
-    background-color: white; 
-    color: black; 
-    box-shadow: 0px;
-    
-    
-  }
-  
+
 button:hover {
     box-shadow: 0px;
-    background-color: #94FC63;
+    background-color: var(--cor-fundo);
 }
   
 
@@ -20,25 +12,26 @@ button:hover {
     display: flex;
     align-items: center; 
     justify-content: center;
-    background: #B8F09D
+    background: var(--cor-fundo)
     
 }
 .menu li{
     position:relative;
 }
 
-.menu li a{color:black; text-decoration:none; padding:10px 20px; display:block;}
+.menu li a{color:white; text-decoration:none; padding:10px 20px; display:block;}
 
 .menu li a:hover{
     box-shadow: 0px;
     background-color: #f3f8f0;
+    color:var(--cor-fundo)
 
 }
 .menu li  ul{
     position:absolute;
     top:100%;
     left: 0px;;
-    background-color:#B8F09D;
+    background-color: var(--cor-fundo);
     display:none;
 }
 .menu li:hover ul, .menu li.over ul{display:block;}
@@ -47,4 +40,16 @@ button:hover {
     border:1px ;
     display:block;
     width:200px;
+}
+.logout {
+    background-color: #666666;
+    color: white;
+    box-shadow: none;
+    border-radius: 0;
+}
+.logout:hover{
+    box-shadow: 0px;
+    background-color: #f3f8f0;
+    color:var(--cor-fundo)
+
 }

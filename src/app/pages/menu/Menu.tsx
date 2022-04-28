@@ -2,6 +2,7 @@
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/auth';
 import './index.css';
+import { ImExit } from "react-icons/im";
 
 
 export const Menu = () => {
@@ -40,11 +41,11 @@ export const Menu = () => {
                     
                     <li><a href='#'>Usuario</a>
                         <ul>
-
+                            
                         </ul>
                     </li>
                     
-                    <li><button className='logout' onClick={handleLogout}>Sair</button></li>
+                    <li><button className='logout' onClick={handleLogout}><ImExit></ImExit></button></li>
                 </ul>
             
 

@@ -26,7 +26,7 @@ export const AuthProvicer = ( {children}) => {
         console.log("login: ", response)
 
         if(response.status === 403){
-            return response.data
+            return response.data.error.toString();
         }
 
         const token = response.data.token;
