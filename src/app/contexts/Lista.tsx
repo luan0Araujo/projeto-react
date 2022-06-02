@@ -7,7 +7,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import { format } from "date-fns";
 
-export const ListaAutomovel = (props:any) => {
+export const Lista = (props:any) => {
   
   const gridRef = useRef<AgGridReact>(null);
   const [rowData, setRowData] = useState([]);
@@ -16,7 +16,7 @@ export const ListaAutomovel = (props:any) => {
   
     list(props.endereco);
     
-},[])
+},[() => {list(props.endereco)}])
 
   const list = useCallback(async (endereco) => {
 

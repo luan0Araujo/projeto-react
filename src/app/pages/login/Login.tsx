@@ -3,30 +3,41 @@ import { useForm } from "react-hook-form";
 import './csLogin.css'
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/auth";
-import { Message } from "../../contexts/Message";
+
 
 
 export const Login = () => {
     const {register, handleSubmit} = useForm();
     const { login} = useContext(AuthContext);
     const [ resp, setResp] = useState();
+    const [visible, setVisible] = useState(false)
+
+    const mensagemUsuario = (msg: any) => {
+
+        setResp(msg)
+        setVisible(true)
+        const timer = setTimeout(() => { setVisible(false)}, 3000 )
+        
+        return () => clearTimeout(timer)
+    }
+
     const onSubmit = async (data: any) => {
 
         const resposta = await login(data);
         if(resposta){
             
-            setResp(resposta)
+            mensagemUsuario(resposta)
            
         }
         
     }
 
-    
     return (
         <div className="login">
             
             
             <form className="formLogin" onSubmit={handleSubmit(onSubmit)}>
+                {visible && ( <div className={'error'}>{resp}</div>)}
                 <label className="email">
                     <span>Email </span>
                     <input {...register("email")}/>
@@ -41,7 +52,7 @@ export const Login = () => {
                     Entrar
                 </button>
                 <div className="resposta">
-                    <Message msg={resp} type='error'/>
+                    
                 </div>
                 
             </form>

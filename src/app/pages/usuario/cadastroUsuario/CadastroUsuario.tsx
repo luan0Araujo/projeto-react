@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { ListaAutomovel } from "../../../contexts/Lista";
+import { Lista } from "../../../contexts/Lista";
 import { requestDelete, requestPost, requestPut} from "../../../shared/Api/Api";
 import { Menu } from "../../menu/Menu";
 
@@ -10,6 +10,9 @@ export const CadastroUsuario = () => {
     const [selecionado, setSelecionado] = useState([])
     const [edit, setEdit] = useState(false)
     const [inputLock, setInputLock] = useState(false)
+    const [msg, setMsg] = useState();
+    const [visible, setVisible] = useState(false)
+    const [type, setType] = useState()
 
     const columnDefs = [
         { field: 'name', headerName: 'Nome' },
@@ -17,6 +20,16 @@ export const CadastroUsuario = () => {
         { field: 'cpf', headerName: 'CPF' },
         { field: 'telefoneCelular', headerName: 'Telefone' },
     ];
+
+    const mensagemUsuario = (msg: any, type: any) => {
+
+        setMsg(msg)
+        setType(type)
+        setVisible(true)
+        const timer = setTimeout(() => { setVisible(false)}, 3000 )
+        
+        return () => clearTimeout(timer)
+    }
 
     const Limpar = () => {
         setEdit(false)
@@ -29,8 +42,16 @@ export const CadastroUsuario = () => {
     
     }
 
-    const excluirAutomovel = () => {
-        const resposta = requestDelete(`/usuarios/${selecionado}`)
+    const excluirAutomovel = async () => {
+        const resposta = await requestDelete(`/usuarios/${selecionado}`)
+
+        if (resposta.status === 200){
+            mensagemUsuario('Excluido com Sucesso', 'success')
+            Limpar()
+        }
+        else {
+            mensagemUsuario(`Erro ${resposta.data.error}`, 'error')
+        }
     }
 
     const editaAutomovel = () => {
@@ -56,11 +77,21 @@ export const CadastroUsuario = () => {
 
         if ( edit === true ){
             const resposta = await requestPut(`/usuarios/${selecionado}`,data)
-            console.log(resposta)
+            if (resposta.status === 200){
+                mensagemUsuario('Editado com Sucesso', 'success')
+            }
+            else {
+                mensagemUsuario(`Erro ${resposta.data.error}`, 'error')
+            }
         }
         else{
             const resposta = await requestPost("/usuarios",data)
-            console.log('Error  ', resposta)
+            if (resposta.status === 201){
+                mensagemUsuario('Criado com Sucesso', 'success')
+            }
+            else {
+                mensagemUsuario(`Erro ${resposta.data.error}`, 'error')
+            }
         }
     
     }
@@ -71,38 +102,41 @@ export const CadastroUsuario = () => {
                 <Menu></Menu>
             </div>
             <div className="aa">
-                <ListaAutomovel 
+                <Lista 
                 onSelectionChanged = {onSelectionChanged} 
                 columnDef = {columnDefs}
                 endereco = '/usuarios'
-                ></ListaAutomovel>
+                ></Lista>
             </div>
+            
+            {visible && ( <div className={type}>{msg}</div>)}
+
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label>
                     <span>Nome </span>
-                    <input {...register("name")} disabled={inputLock}/>
+                    <input {...register("name")} disabled={inputLock} required/>
                 </label>
 
                 <label >
                     <span>Email </span>
-                    <input {...register("email")} disabled={inputLock}/>
+                    <input {...register("email")} disabled={inputLock} required/>
                 </label>
                 <label>
                     <span>Senha </span>
-                    <input {...register("password")} disabled={inputLock}/>
+                    <input {...register("password")} disabled={inputLock} required/>
                 </label>
                 <label >
                     <span>CPF </span>
-                    <input {...register("cpf")} disabled={inputLock}/>
+                    <input {...register("cpf")} disabled={inputLock} required/>
                 </label>
                 <label >
                     <span>Telefone </span>
-                    <input {...register("telefoneCelular")} disabled={inputLock}/>
+                    <input {...register("telefoneCelular")} disabled={inputLock} required/>
                 </label>
 
-                {edit ? <button onClick={Limpar}>Limpar</button> : true}
-                {edit ? <button onClick={editaAutomovel}>Editar</button> : false}
-                {edit ? <button onClick={excluirAutomovel}>Excluir</button> : false}
+                {edit ? <button type="button" onClick={Limpar}>Limpar</button> : true}
+                {edit ? <button type="button" onClick={editaAutomovel}>Editar</button> : false}
+                {edit ? <button type="reset" onClick={excluirAutomovel}>Excluir</button> : false}
                 <button>Registrar</button>
             </form>
         </div>
