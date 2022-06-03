@@ -15,11 +15,20 @@ input {
     border-radius: 7px;
     position: absolute;
     height: 35px;
-    width: 220px;
+    width: 300px;
+    left: 120px;
+    border: solid 1px var(--cor-fundo);
+    
+}
+
+select {
+    border-radius: 7px;
+    position: absolute;
+    height: 35px;
+    width: 300px;
     left: 120px;
     border: solid 1px var(--cor-fundo);
 }
-
 button {
     font-size: large;
     background-color: white;
@@ -28,7 +37,7 @@ button {
     border-radius: 10px;
     width: 105px;
     height: 45px;
-
+    margin-right: 20px;
 }
 
 button:hover {
@@ -40,14 +49,14 @@ button:hover {
 label {
 
     display: flex;
-    height: 55px;
+    height: 60px;
 }
 form {
 
     position: absolute;
-    width: 40%;
-    height: 70%;
-    left: 98px;
-    top: 28%;
+    width: 500px;
+    height: 500px;
+    left: 170px;
+    top: 200px;
 
 }

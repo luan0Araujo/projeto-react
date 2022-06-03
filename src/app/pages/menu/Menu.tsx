@@ -28,20 +28,9 @@ export const Menu = () => {
                     <li><a href='#'>Cadastro</a>
                         <ul>
                             <li><a href="http://localhost:3000/cadastro-automovel">Automovel</a></li>
-                            <li><a href="http://localhost:3000/cadastro-endereco">Endereço</a></li>
+                            <li><a href="http://localhost:3000/tipo-automovel">Tipo Automovel</a></li>
                             <li ><a href="http://localhost:3000/cadastro-usuario">Usuario</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a href='#'>Endereço</a>
-                        <ul>
-
-                        </ul>
-                    </li>
-                    
-                    <li><a href='#'>Usuario</a>
-                        <ul>
-                            
+                            <li ><a href="http://localhost:3000/cadastro-cliente">Cliente</a></li>
                         </ul>
                     </li>
                     
