@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-
+    baseURL: "https://ngn-api.herokuapp.com/",
     headers: {
         'Access-Control-Allow-Origin': '*',
         'Authorization': `token ${localStorage.getItem('token')}`
