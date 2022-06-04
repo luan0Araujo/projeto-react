@@ -29,6 +29,13 @@ export const requestPut = (end:string, data:any) => {
     });
 }
 
+export const requestPatch = (end:string, data:any) => {
+    return  api.patch(end, data)
+    .catch((err) => {
+        return err.response
+    });
+}
+
 export const requestDelete = (end:string) => {
     return  api.delete(end)
     .catch((err) => {

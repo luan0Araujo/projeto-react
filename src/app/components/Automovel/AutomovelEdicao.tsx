@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap"
 import { useForm } from "react-hook-form";
-import { requestGet, requestPost, requestPut } from "../shared/Api/Api";
-import { MensagemUsuario } from "./MensagemUsuario";
+import { requestGet, requestPut } from "../../shared/Api/Api";
+import { MensagemUsuario } from "../MensagemUsuario";
 
 
 export const AutomovelEdicao = (props:any) => {

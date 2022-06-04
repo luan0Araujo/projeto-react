@@ -1,8 +1,8 @@
 import { format } from "date-fns";
 import { useCallback, useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
-import { AutomovelCriacao } from "../../../components/AutomovelCriacao";
-import { AutomovelEdicao } from "../../../components/AutomovelEdicao";
+import { AutomovelCriacao } from "../../../components/Automovel/AutomovelCriacao";
+import { AutomovelEdicao } from "../../../components/Automovel/AutomovelEdicao";
 import { MensagemUsuario } from "../../../components/MensagemUsuario";
 import { requestDelete, requestGet } from "../../../shared/Api/Api";
 import { columnDefsAutomovel } from "../../../shared/constants/columnDefsAutomovel";
