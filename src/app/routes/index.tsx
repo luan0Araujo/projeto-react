@@ -26,7 +26,7 @@ export const Routes = () => {
                     <Route path="/entrar" element={<Login />} />
                     <Route path="/cadastro-usuario" element={ <Private> <CadastroUsuario /> </Private>} />
                     <Route path="/cadastro-automovel" element={ <Private> <CadastroAutomovel /> </Private> } />
-                    <Route path="/lista-automovel" element={ <Private> <ListagemAutomovel /> </Private> } />
+                    <Route path="/automovel" element={ <Private> <ListagemAutomovel /> </Private> } />
                     <Route path="/cadastro-cliente" element={ <Private> <CadastroCliente /> </Private> } />
                     <Route path="/tipo-automovel" element={ <Private> <CadastroEndereco /> </Private> } />
                     <Route path="/ordem" element={ <Private> <OrdemServico /> </Private> } />

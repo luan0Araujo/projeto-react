@@ -13,6 +13,7 @@ import "./style.css"
 export const ListagemAutomovel = (props: any) => {
     const [rowData, setRowData] = useState([]);
 
+    const [actualId, setActualId] = useState('')
     const [showEdition, setShowEdition] = useState(false);
     const [showCreation, setShowCreation] = useState(false);
 
@@ -20,8 +21,17 @@ export const ListagemAutomovel = (props: any) => {
     const [msg, setMsg] = useState<string>('');
     const [type, setType] = useState<string>('');
 
-    const endereco = "/automovel"
+    const mensagemUsuario = async (message: string, typeMessage: string) => {
+        setMessageVisible(true);
+        setMsg(message)
+        setType(typeMessage)
+        const timer = setTimeout(() => { setMessageVisible(false) }, 3000)
 
+        return () => clearTimeout(timer)
+    }
+
+
+    const endereco = "/automovel"
     useEffect(() => {
 
         list(endereco);
@@ -48,15 +58,6 @@ export const ListagemAutomovel = (props: any) => {
         else {
             mensagemUsuario('Erro', 'error')
         }
-    }
-
-    const mensagemUsuario = async (message: string, typeMessage: string) => {
-        setMessageVisible(true);
-        setMsg(message)
-        setType(typeMessage)
-        const timer = setTimeout(() => { setMessageVisible(false) }, 3000)
-
-        return () => clearTimeout(timer)
     }
 
     return (
@@ -96,7 +97,7 @@ export const ListagemAutomovel = (props: any) => {
                                             <td>{res["year"]}</td>
                                             <td>{res["renavam"]}</td>
                                             <td>{res["cliente"]["name"]}</td>
-                                            <td><Button variant="warning" onClick={() => setShowEdition(true)}>✎ Editar</Button></td>
+                                            <td><Button variant="warning" onClick={() => {setShowEdition(true); setActualId(res["id"])}}>✎ Editar</Button></td>
                                             <td><Button variant="danger" onClick={() => excluirAutomovel(res["id"])}>&#xE15C; Excluir</Button></td>
                                         </tr>
                                     })
@@ -106,7 +107,7 @@ export const ListagemAutomovel = (props: any) => {
                     </div>
                 </div>
             </div>
-            {showEdition ? (<AutomovelEdicao show={showEdition} onClose={() => setShowEdition(false)} />) : null}
+            {showEdition ? (<AutomovelEdicao show={showEdition} id={actualId} onClose={() => setShowEdition(false)} />) : null}
             {showCreation ? (<AutomovelCriacao show={showCreation} onClose={() => setShowCreation(false)} />) : null}
 
         </>
