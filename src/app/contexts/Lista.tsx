@@ -40,14 +40,15 @@ export const Lista = (props:any) => {
   return (
     <div className="ag-theme-alpine" style={{ height: 360, width: 700}}>
       
-      <AgGridReact 
-        ref={gridRef}
-        rowData={rowData}   
-        columnDefs={props.columnDef}
-        rowSelection={'single'}
-        onSelectionChanged={onSelectionChanged}
-        >
-      </AgGridReact>
+        <AgGridReact 
+          ref={gridRef}
+          rowData={rowData}   
+          columnDefs={props.columnDef}
+          rowSelection={'single'}
+          onSelectionChanged={onSelectionChanged}
+          >
+        </AgGridReact>
+
     </div>
   );
 };
