@@ -6,7 +6,8 @@ import { Lista } from "../../../contexts/Lista";
 import './Lista.css'
 import './csMessage.css'
 
-
+import { Button, Form } from "react-bootstrap"
+import { ListagemAutomovel } from "../listagemAutomovel/ListagemAutomovel";
 
 export const CadastroAutomovel = () => {
 
@@ -134,74 +135,87 @@ export const CadastroAutomovel = () => {
     }
 
     return (
-        <div>
+        <>
             <div>
                 <Menu></Menu>
             </div>
             <div className="aa">
-                <Lista 
+                <ListagemAutomovel 
+                onSelectionChanged = {onSelectionChanged} 
+
+                />
+                {/* <Lista 
                     onSelectionChanged = {onSelectionChanged} 
                     columnDef = {columnDefs}
                     endereco = '/automovel'
                     
-                ></Lista>
+                ></Lista> */}
             </div>
             {visible && ( <div className={type}>{msg}</div>)}
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <label>
-                    <span>Placa </span>
-                    <input {...register("plate")}  disabled={inputLock} required/>
-                </label>
-                <label >
-                    <span>Modelo </span>
-                    <input {...register("model")}  disabled={inputLock} required/>
-                </label>
-                <label >
-                    <span>Marca </span>
-                    <input {...register("brand")}  disabled={inputLock} required/>
-                </label>
-                <label >
-                    <span>Cor </span>
-                    <input {...register("color")}  disabled={inputLock} required/>
-                </label>
-                <label >
-                    <span>Ano </span>
-                    <input {...register("year")}  disabled={inputLock} required/>
-                </label>
-                <label>
-                    <span>Renavam</span>
-                    <input {...register("renavam")}  disabled={inputLock} required/>
-                </label>
-                <label>
+            
+            <Form onSubmit={handleSubmit(onSubmit)}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Placa</Form.Label>
+                    <Form.Control {...register("plate")} type="text" placeholder="Digite a placa" required/>
+                </Form.Group>
 
-                    <span>Cliente</span>
-                    <select {...register("customerId")} disabled={inputLock}>
-                        <option></option>
+                <Form.Group className="mb-3" controlId="formBasicModelo">
+                    <Form.Label>Modelo</Form.Label>
+                    <Form.Control {...register("model")} type="text" placeholder="Modelo" required />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicMarca">
+                    <Form.Label>Marca</Form.Label>
+                    <Form.Control {...register("brand")} type="text" placeholder="Marca" required />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicCor">
+                    <Form.Label>Cor</Form.Label>
+                    <Form.Control {...register("color")} type="text" placeholder="Cor"  required/>
+                </Form.Group>
+                
+                <Form.Group className="mb-3" controlId="formBasicAno">
+                    <Form.Label>Ano</Form.Label>
+                    <Form.Control {...register("year")} type="text" placeholder="Ano do Carro" required/>
+                </Form.Group>
+                
+                <Form.Group className="mb-3" controlId="formBasicRenavam">
+                    <Form.Label>Renavam</Form.Label>
+                    <Form.Control {...register("renavam")} type="text" placeholder="Renavam" required/>
+                </Form.Group>
+
+
+                <Form.Group>
+                    <Form.Label>Cliente</Form.Label>
+                    <Form.Select {...register("customerId")} disabled={inputLock} required>
+                        <option>Selecione o Cliente</option>
                         {
                             listClient.map(({name}) => {return <option>{name}</option>})
                         }
-                    </select>
+                    </Form.Select>
+                </Form.Group>
 
-                </label>
-                <label>
-
-                    <span>Tipo de Veiculo</span>
-                    <select {...register("typeId")} disabled={inputLock}>
-                    <option></option>
+                <Form.Group>
+                    <Form.Label>Tipo de Veiculo</Form.Label>
+                    <Form.Select {...register("typeId")} disabled={inputLock} required>
+                        <option>Selecione o Tipo do Veículo</option>
                         {
                             listTipo.map(({description}) => {return <option>{description}</option>})
                         }
-                    </select>
+                    </Form.Select>
+                </Form.Group>
+                <div className="button-group">
+                    {edit ? <Button type="button"  onClick={Limpar}>Limpar</Button> : true}
+                    {edit ? <Button type="button" variant="warning" onClick={editaAutomovel}>Editar</Button> : false}
+                    {edit ? <Button type="button" variant="danger" onClick={excluirAutomovel}>Excluir</Button>: false}
 
-                </label>
-                {edit ? <button type="button" onClick={Limpar}>Limpar</button> : true}
-                {edit ? <button type="button" onClick={editaAutomovel}>Editar</button> : false}
-                {edit ? <button type="reset" onClick={excluirAutomovel}>Excluir</button> : false}
+                    <Button variant="success" type="submit">
+                        Salvar
+                    </Button>
+                </div>
 
-                <button type="submit">Registrar</button>
-            </form>
-
-
-        </div>
+            </Form>
+        
+        </>
     );
 }

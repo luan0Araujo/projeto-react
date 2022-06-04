@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { BrowserRouter, Route, Routes as Switch, Navigate } from "react-router-dom";
 import { AuthProvicer, AuthContext } from "../contexts/auth";
 import { Dashboard, Login, CadastroUsuario, Menu, CadastroAutomovel, CadastroEndereco, Lista, CadastroCliente, OrdemServico } from '../pages';
-
+import { ListagemAutomovel } from "../pages/automovel/listagemAutomovel/ListagemAutomovel";
 export const Routes = () => {
 
     const Private = ({children}:any) => {
@@ -26,7 +26,7 @@ export const Routes = () => {
                     <Route path="/entrar" element={<Login />} />
                     <Route path="/cadastro-usuario" element={ <Private> <CadastroUsuario /> </Private>} />
                     <Route path="/cadastro-automovel" element={ <Private> <CadastroAutomovel /> </Private> } />
-                    <Route path="/lista-automovel" element={ <Private> <Lista /> </Private> } />
+                    <Route path="/lista-automovel" element={ <Private> <ListagemAutomovel /> </Private> } />
                     <Route path="/cadastro-cliente" element={ <Private> <CadastroCliente /> </Private> } />
                     <Route path="/tipo-automovel" element={ <Private> <CadastroEndereco /> </Private> } />
                     <Route path="/ordem" element={ <Private> <OrdemServico /> </Private> } />
