@@ -18,7 +18,7 @@ export const Menu = () => {
                 <ul className='menu'>
                     <li><a href='#'>Ordem</a>
                         <ul>
-                            <li><a href="#">Nova Ordem</a></li>
+                            <li><a href="http://localhost:3000/ordem">Nova Ordem</a></li>
                             <li><a href="#">Ordens Finalizadas</a></li>
                             <li><a href="#">Ordens em Aberto</a></li>
                             <li><a href="#">Ordens Canceladas</a></li>

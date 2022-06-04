@@ -150,7 +150,7 @@ export const CadastroCliente = () => {
                     <input {...register("email")} disabled={inputLock} required/>
                 </label>
                 <div>
-                    {edit ? <button type="button" onClick={Limpar}>Limpar</button> : true}
+                    {edit ? <button type="button" onClick={Limpar}>Limpar</button> : false}
                     {edit ? <button type="button" onClick={editaAutomovel}>Editar</button> : false}
                     {edit ? <button type='reset' onClick={excluirAutomovel}>Excluir</button> : false}
                 </div>

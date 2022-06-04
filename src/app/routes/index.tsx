@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { BrowserRouter, Route, Routes as Switch, Navigate } from "react-router-dom";
 import { AuthProvicer, AuthContext } from "../contexts/auth";
-import { Dashboard, Login, CadastroUsuario, Menu, CadastroAutomovel, CadastroEndereco, Lista, CadastroCliente } from '../pages';
+import { Dashboard, Login, CadastroUsuario, Menu, CadastroAutomovel, CadastroEndereco, Lista, CadastroCliente, OrdemServico } from '../pages';
 
 export const Routes = () => {
 
@@ -29,6 +29,7 @@ export const Routes = () => {
                     <Route path="/lista-automovel" element={ <Private> <Lista /> </Private> } />
                     <Route path="/cadastro-cliente" element={ <Private> <CadastroCliente /> </Private> } />
                     <Route path="/tipo-automovel" element={ <Private> <CadastroEndereco /> </Private> } />
+                    <Route path="/ordem" element={ <Private> <OrdemServico /> </Private> } />
                     <Route path="/menu" element={ <Private><Menu /></Private> } />
                     <Route path="*" element={<Navigate to="/entrar" />} />
                 </Switch>

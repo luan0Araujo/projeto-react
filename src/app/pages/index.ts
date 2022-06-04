@@ -6,3 +6,4 @@ export * from './automovel/cadastroAutomovel/CadastroAutomovel';
 export * from './automovel/tipoAutomovel/tipoAutomovel';
 export * from '../contexts/Lista';
 export * from './cliente/cadastroCliente/CadastroCliente'
+export * from './ordem/OrdemServico'
