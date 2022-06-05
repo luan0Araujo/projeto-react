@@ -17,6 +17,8 @@ export const ListagemAutomovel = (props: any) => {
     const [showEdition, setShowEdition] = useState(false);
     const [showCreation, setShowCreation] = useState(false);
 
+    const [actualData, setActualData] = useState([{}])
+
     const [messageVisible, setMessageVisible] = useState(false);
     const [msg, setMsg] = useState<string>('');
     const [type, setType] = useState<string>('');
@@ -36,7 +38,7 @@ export const ListagemAutomovel = (props: any) => {
 
         list(endereco);
 
-    }, [() => { list(endereco) }])
+    }, [actualData])
 
 
     const list = useCallback(async (endereco) => {
@@ -46,7 +48,9 @@ export const ListagemAutomovel = (props: any) => {
             const data = resposta.data.filter((e: any) => e.birthDate = format(Date.parse(e.birthDate), 'yyyy-MM-dd'))
             setRowData(await data)
         }
-        setRowData(await resposta.data)
+        const resp =  await resposta.data;
+        setRowData(resp)
+        setActualData(resp)
 
     }, []);
 
@@ -54,6 +58,8 @@ export const ListagemAutomovel = (props: any) => {
         const resposta = await requestDelete(`/automovel/${id}`)
         if (resposta.status === 200) {
             mensagemUsuario('Excluido com Sucesso', 'success')
+            const filtered = actualData.filter((e:any) => e.id === id)
+            setActualData(filtered)
         }
         else {
             mensagemUsuario('Erro', 'error')

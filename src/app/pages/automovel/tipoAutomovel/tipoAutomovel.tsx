@@ -13,6 +13,7 @@ export const CadastroEndereco = () => {
 
     const [rowData, setRowData] = useState([]);
 
+    const [actualData, setActualData] = useState([{}])
     const [actualId, setActualId] = useState('')
     const [showEdition, setShowEdition] = useState(false);
     const [showCreation, setShowCreation] = useState(false);
@@ -36,7 +37,7 @@ export const CadastroEndereco = () => {
 
         list(endereco);
 
-    }, [() => { list(endereco) }])
+    }, [actualData])
 
 
     const list = useCallback(async (endereco) => {
@@ -45,7 +46,10 @@ export const CadastroEndereco = () => {
             const data = resposta.data.filter((e: any) => e.created_at = format(Date.parse(e.created_at), 'yyyy-MM-dd'))
             setRowData(await data)
         }
-        setRowData(await resposta.data)
+        const res = await resposta.data
+        setRowData(res)
+        setActualData(res)
+        
 
     }, []);
 
@@ -53,6 +57,8 @@ export const CadastroEndereco = () => {
         const resposta = await requestDelete(`/automovel/tipo/${id}`)
         if (resposta.status === 200) {
             mensagemUsuario('Excluido com Sucesso', 'success')
+            const filtered = actualData.filter((e:any) => e.id === id)
+            setActualData(filtered)
         }
         else {
             mensagemUsuario(`Erro: ${resposta.data.error}`, 'error')

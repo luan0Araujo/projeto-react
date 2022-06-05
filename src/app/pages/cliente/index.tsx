@@ -14,7 +14,9 @@ export const Clientes = () => {
 
     const [rowData, setRowData] = useState([]);
 
+    const [actualData, setActualData] = useState([{}])
     const [actualId, setActualId] = useState('')
+
     const [showEdition, setShowEdition] = useState(false);
     const [showCreation, setShowCreation] = useState(false);
 
@@ -34,7 +36,7 @@ export const Clientes = () => {
     const endereco = "/clientes"
     useEffect(() => {
         list(endereco);
-    }, [ async () => await list(endereco)])
+    }, [actualData])
 
 
     const list = useCallback(async (endereco) => {
@@ -48,7 +50,9 @@ export const Clientes = () => {
                     const data = resposta.data.filter((e: any) => e.birthDate = format(Date.parse(e.birthDate), 'yyyy-MM-dd'))
                     setRowData(await data)
                 }
-                setRowData(await resposta.data)
+                const response = await resposta.data;
+                setRowData(response)
+                setActualData(response)
             }
         )
     }, []);
@@ -57,6 +61,8 @@ export const Clientes = () => {
         const resposta = await requestDelete(`/clientes/${id}`)
         if (resposta.status === 200) {
             mensagemUsuario('Excluido com Sucesso', 'success')
+            const filtered = actualData.filter((e:any) => e.id === id)
+            setActualData(filtered)
         }
         else {
             mensagemUsuario(`Erro: ${resposta.data.error}`, 'error')
