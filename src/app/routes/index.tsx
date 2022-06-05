@@ -4,6 +4,7 @@ import { AuthProvicer, AuthContext } from "../contexts/auth";
 import { Dashboard, Login, CadastroUsuario, Menu, CadastroAutomovel, CadastroEndereco, Lista, CadastroCliente, OrdemServico } from '../pages';
 import { ListagemAutomovel } from "../pages/automovel/listagemAutomovel/ListagemAutomovel";
 import { Clientes } from "../pages/cliente";
+import { Usuarios } from "../pages/usuario";
 export const Routes = () => {
 
     const Private = ({children}:any) => {
@@ -27,12 +28,18 @@ export const Routes = () => {
                     <Route path="/entrar" element={<Login />} />
                     <Route path="/cadastro-usuario" element={ <Private> <CadastroUsuario /> </Private>} />
                     <Route path="/cadastro-automovel" element={ <Private> <CadastroAutomovel /> </Private> } />
-                    <Route path="/automovel" element={ <Private> <ListagemAutomovel /> </Private> } />
-                    <Route path="/cadastro-cliente" element={ <Private> <CadastroCliente /> </Private> } />
-                    <Route path="/clientes" element={ <Private> <Clientes /> </Private> } />
-                    <Route path="/tipo-automovel" element={ <Private> <CadastroEndereco /> </Private> } />
                     <Route path="/ordem" element={ <Private> <OrdemServico /> </Private> } />
                     <Route path="/menu" element={ <Private><Menu /></Private> } />
+                    <Route path="/cadastro-cliente" element={ <Private> <CadastroCliente /> </Private> } />
+
+                    {/* separando as rotas refatoradas por motivos de organização */}
+                    <Route path="/automovel" element={ <Private> <ListagemAutomovel /> </Private> } />
+                    <Route path="/clientes" element={ <Private> <Clientes /> </Private> } />
+                    <Route path="/usuarios" element={ <Private> <Usuarios /> </Private> } />
+                    <Route path="/tipo-automovel" element={ <Private> <CadastroEndereco /> </Private> } />
+
+
+
                     <Route path="*" element={<Navigate to="/entrar" />} />
                 </Switch>
             </AuthProvicer>
