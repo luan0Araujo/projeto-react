@@ -62,7 +62,7 @@ export const ListagemAutomovel = (props: any) => {
             setActualData(filtered)
         }
         else {
-            mensagemUsuario('Erro', 'error')
+            mensagemUsuario(`Erro: ${resposta.data.error}`, 'error')
         }
     }
 
