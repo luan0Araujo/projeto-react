@@ -30,7 +30,7 @@ export const Menu = () => {
                             <li><a href="http://localhost:3000/automovel">Automovel</a></li>
                             <li><a href="http://localhost:3000/tipo-automovel">Tipo Automovel</a></li>
                             <li ><a href="http://localhost:3000/cadastro-usuario">Usuario</a></li>
-                            <li ><a href="http://localhost:3000/cadastro-cliente">Cliente</a></li>
+                            <li ><a href="http://localhost:3000/clientes">Cliente</a></li>
                         </ul>
                     </li>
                     

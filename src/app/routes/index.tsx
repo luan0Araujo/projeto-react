@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes as Switch, Navigate } from "react-router-d
 import { AuthProvicer, AuthContext } from "../contexts/auth";
 import { Dashboard, Login, CadastroUsuario, Menu, CadastroAutomovel, CadastroEndereco, Lista, CadastroCliente, OrdemServico } from '../pages';
 import { ListagemAutomovel } from "../pages/automovel/listagemAutomovel/ListagemAutomovel";
+import { Clientes } from "../pages/cliente";
 export const Routes = () => {
 
     const Private = ({children}:any) => {
@@ -28,6 +29,7 @@ export const Routes = () => {
                     <Route path="/cadastro-automovel" element={ <Private> <CadastroAutomovel /> </Private> } />
                     <Route path="/automovel" element={ <Private> <ListagemAutomovel /> </Private> } />
                     <Route path="/cadastro-cliente" element={ <Private> <CadastroCliente /> </Private> } />
+                    <Route path="/clientes" element={ <Private> <Clientes /> </Private> } />
                     <Route path="/tipo-automovel" element={ <Private> <CadastroEndereco /> </Private> } />
                     <Route path="/ordem" element={ <Private> <OrdemServico /> </Private> } />
                     <Route path="/menu" element={ <Private><Menu /></Private> } />
