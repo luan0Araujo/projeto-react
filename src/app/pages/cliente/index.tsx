@@ -1,6 +1,8 @@
 import { format } from "date-fns";
 import { useState, useEffect, useCallback } from "react";
 import { Button, Table } from "react-bootstrap";
+import { ClienteCriacao } from "../../components/Clientes/ClienteCriacao";
+import { ClienteEdicao } from "../../components/Clientes/ClienteEdicao";
 import { MensagemUsuario } from "../../components/MensagemUsuario";
 import { TipoAutomovelCriacao } from "../../components/TipoAutomovel/TipoAutomovelCriacao";
 import { TipoAutomovelEdicao } from "../../components/TipoAutomovel/TipoAutomovelEdicao";
@@ -30,27 +32,25 @@ export const Clientes = () => {
     }
 
     const endereco = "/clientes"
-
     useEffect(() => {
-
         list(endereco);
-
-    }, [() => { list(endereco) }])
+    }, [ async () => await list(endereco)])
 
 
     const list = useCallback(async (endereco) => {
-        const resposta = await requestGet(endereco)
-        console.log(resposta.data)
-        if (resposta.data[0].createdAt) {
-            const data = resposta.data.filter((e: any) => e.createdAt = format(Date.parse(e.createdAt), 'yyyy-MM-dd'))
-            setRowData(await data)
-        }
-        if (resposta.data[0].birthDate) {
-            const data = resposta.data.filter((e: any) => e.birthDate = format(Date.parse(e.birthDate), 'yyyy-MM-dd'))
-            setRowData(await data)
-        }
-        setRowData(await resposta.data)
-
+        await requestGet(endereco).then(
+            async (resposta) => {
+                if (resposta.data[0].createdAt) {
+                    const data = resposta.data.filter((e: any) => e.createdAt = format(Date.parse(e.createdAt), 'yyyy-MM-dd'))
+                    setRowData(await data)
+                }
+                if (resposta.data[0].birthDate) {
+                    const data = resposta.data.filter((e: any) => e.birthDate = format(Date.parse(e.birthDate), 'yyyy-MM-dd'))
+                    setRowData(await data)
+                }
+                setRowData(await resposta.data)
+            }
+        )
     }, []);
 
     const excluirCliente = async (id: string) => {
@@ -110,8 +110,8 @@ export const Clientes = () => {
                     </div>
                 </div>
             </div>
-            {showEdition ? (<TipoAutomovelEdicao show={showEdition} id={actualId} onClose={() => setShowEdition(false)} />) : null}
-            {showCreation ? (<TipoAutomovelCriacao show={showCreation} onClose={() => setShowCreation(false)} />) : null}
+            {showEdition ? (<ClienteEdicao show={showEdition} id={actualId} onClose={() => setShowEdition(false)} />) : null}
+            {showCreation ? (<ClienteCriacao show={showCreation} onClose={() => setShowCreation(false)} />) : null}
 
         </>
 

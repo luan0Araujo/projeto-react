@@ -42,32 +42,32 @@ export const ClienteCriacao = (props: any) => {
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Nome</Form.Label>
-                        <Form.Control {...register("name")} type="text" placeholder="Digite a descrição do Tipo Automovel" required />
+                        <Form.Control {...register("name")} type="text" placeholder="Digite o nome do cliente" required />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
-                        <Form.Control {...register("email")} type="text" placeholder="Digite a descrição do Tipo Automovel" required />
+                        <Form.Control {...register("email")} type="text" placeholder="Digite um email" required />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>CPF</Form.Label>
-                        <Form.Control {...register("cpf")} type="text" placeholder="Digite a descrição do Tipo Automovel" required />
+                        <Form.Control {...register("cpf")} type="text" placeholder="Digite um CPF válido" required />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>RG</Form.Label>
-                        <Form.Control {...register("rg")} type="text" placeholder="Digite a descrição do Tipo Automovel" required />
+                        <Form.Control {...register("rg")} type="text" placeholder="Digite o RG do cliente" required />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Telefone Celular</Form.Label>
-                        <Form.Control {...register("telefoneCelular")} type="text" placeholder="Digite a descrição do Tipo Automovel" required />
+                        <Form.Control {...register("telefoneCelular")} type="text" placeholder="Digite o Telefone Celular" required />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Data de Nascimento</Form.Label>
-                        <Form.Control {...register("birthDate")} type="date" placeholder="Digite a descrição do Tipo Automovel" required />
+                        <Form.Control {...register("birthDate")} type="date" required />
                     </Form.Group>
 
                     <Modal.Footer>
