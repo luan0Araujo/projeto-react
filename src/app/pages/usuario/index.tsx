@@ -5,6 +5,7 @@ import { MensagemUsuario } from "../../components/MensagemUsuario";
 import { TipoAutomovelCriacao } from "../../components/TipoAutomovel/TipoAutomovelCriacao";
 import { TipoAutomovelEdicao } from "../../components/TipoAutomovel/TipoAutomovelEdicao";
 import { UsuarioCriacao } from "../../components/Usuarios/UsuarioCriacao";
+import { UsuarioEdicao } from "../../components/Usuarios/UsuarioEdicao";
 import { requestGet, requestDelete } from "../../shared/Api/Api";
 import { columnDefsUsuario } from "../../shared/constants/columnsDefsUsuario";
 import { Menu } from "../menu/Menu";
@@ -110,7 +111,7 @@ export const Usuarios = () => {
                     </div>
                 </div>
             </div>
-            {showEdition ? (<TipoAutomovelEdicao show={showEdition} id={actualId} onClose={() => setShowEdition(false)} />) : null}
+            {showEdition ? (<UsuarioEdicao show={showEdition} id={actualId} onClose={() => setShowEdition(false)} />) : null}
             {showCreation ? (<UsuarioCriacao show={showCreation} onClose={() => setShowCreation(false)} />) : null}
 
         </>
