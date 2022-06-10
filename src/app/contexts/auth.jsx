@@ -33,7 +33,7 @@ export const AuthProvicer = ( {children}) => {
         localStorage.setItem("token", token);
         api.defaults.headers.Authorization = `Bearer ${token}`;
         setUser(token);
-        navigate("/menu");
+        navigate("/ordem-servico");
    
     }
     const logout = () => {
