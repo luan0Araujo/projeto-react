@@ -6,7 +6,7 @@ import { Menu } from "../menu/Menu"
 import { OrdemProcedimentos } from "./OrdemProcedimentos";
 
 
-export const OrdemServico = () => {
+export const OrdemServicoP = () => {
 
     const {register, handleSubmit, setValue} = useForm();
     const [ordemStatus, setOrdemStatus] = useState([])

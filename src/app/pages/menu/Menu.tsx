@@ -17,7 +17,7 @@ export const Menu = () => {
         <div>
             <Nav defaultActiveKey="/ordem" as="ul" className='menu'>
                 <Nav.Item as="li">
-                    <Nav.Link href="/ordem">Ordem Serviço</Nav.Link>
+                    <Nav.Link href="/ordem-servico">Ordem Serviço</Nav.Link>
                 </Nav.Item>
                 <Nav.Item as="li">
                     <Nav.Link href="/automovel">Automovel</Nav.Link>
