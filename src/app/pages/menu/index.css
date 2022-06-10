@@ -3,7 +3,7 @@
 
 button:hover {
     box-shadow: 0px;
-    background-color: var(--cor-fundo);
+    background-color: var(--cor-secundaria);
 }
   
 
@@ -12,7 +12,7 @@ button:hover {
     display: flex;
     align-items: center; 
     justify-content: center;
-    background: var(--cor-fundo)
+    background: var(--cor-primaria)
     
 }
 .menu li{
@@ -24,14 +24,14 @@ button:hover {
 .menu li a:hover{
     box-shadow: 0px;
     background-color: #f3f8f0;
-    color:var(--cor-fundo)
+    color:var(--cor-primaria)
 
 }
 .menu li  ul{
     position:absolute;
     top:100%;
     left: 0px;;
-    background-color: var(--cor-fundo);
+    background-color: var(--cor-primaria);
     display:none;
 }
 .menu li:hover ul, .menu li.over ul{display:block;}
@@ -41,7 +41,7 @@ button:hover {
     display:block;
     width:200px;
 }
-.logout {
+/* .logout {
     background-color: #666666;
     color: white;
     box-shadow: none;
@@ -52,4 +52,4 @@ button:hover {
     background-color: #f3f8f0;
     color:var(--cor-fundo)
 
-}
+} */

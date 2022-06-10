@@ -6,7 +6,9 @@
 } */
 
 :root {
-    --cor-fundo: #666666;
+    --cor-primaria: #014F93;
+    --cor-secundaria: #93CAED;
+    --cor-terciaria: #93EDE3;
 }
 
 
