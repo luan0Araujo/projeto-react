@@ -32,7 +32,7 @@ export const Menu = () => {
                     <Nav.Link href="/clientes">Clientes</Nav.Link>
                 </Nav.Item>
                 <Nav.Item as="li">
-                    <Nav.Link href="#" onClick={handleLogout}>LogOut</Nav.Link>
+                    <Nav.Link href="#" onClick={handleLogout}>Sair</Nav.Link>
                 </Nav.Item>
 
             </Nav>
