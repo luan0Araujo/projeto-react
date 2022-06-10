@@ -1,15 +1,15 @@
 import { format } from "date-fns";
 import { useState, useEffect, useCallback } from "react";
 import { Button, Table } from "react-bootstrap";
-import { ClienteCriacao } from "../../components/Clientes/ClienteCriacao";
-import { ClienteEdicao } from "../../components/Clientes/ClienteEdicao";
-import { MensagemUsuario } from "../../components/MensagemUsuario";
-import { TipoAutomovelCriacao } from "../../components/TipoAutomovel/TipoAutomovelCriacao";
-import { TipoAutomovelEdicao } from "../../components/TipoAutomovel/TipoAutomovelEdicao";
-import { requestDelete, requestGet } from "../../shared/Api/Api";
-import { columnDefsCliente } from "../../shared/constants/columnsDefsCliente";
-import { columnsDefsOs } from "../../shared/constants/columnsDefsOs";
-import { Menu } from "../menu/Menu";
+import { ClienteCriacao } from "../../../components/Clientes/ClienteCriacao";
+import { ClienteEdicao } from "../../../components/Clientes/ClienteEdicao";
+import { MensagemUsuario } from "../../../components/MensagemUsuario";
+import { TipoAutomovelCriacao } from "../../../components/TipoAutomovel/TipoAutomovelCriacao";
+import { TipoAutomovelEdicao } from "../../../components/TipoAutomovel/TipoAutomovelEdicao";
+import { requestDelete, requestGet } from "../../../shared/Api/Api";
+import { columnDefsCliente } from "../../../shared/constants/columnsDefsCliente";
+import { columnsDefsOs } from "../../../shared/constants/columnsDefsOs";
+import { Menu } from "../../menu/Menu";
 
 export const OrdemServico = () => {
 

@@ -4,7 +4,7 @@ import { AuthProvicer, AuthContext } from "../contexts/auth";
 import { Dashboard, Login, CadastroUsuario, Menu, CadastroAutomovel, CadastroEndereco, Lista, CadastroCliente } from '../pages';
 import { ListagemAutomovel } from "../pages/automovel/listagemAutomovel/ListagemAutomovel";
 import { Clientes } from "../pages/cliente";
-import { OrdemServico } from "../pages/ordem";
+import { OrdemServico } from "../pages/ordem/OrdemServico/index";
 import { Usuarios } from "../pages/usuario";
 export const Routes = () => {
 
