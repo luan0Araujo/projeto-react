@@ -4,6 +4,7 @@ import { Button, Table } from "react-bootstrap";
 import { ClienteCriacao } from "../../../components/Clientes/ClienteCriacao";
 import { ClienteEdicao } from "../../../components/Clientes/ClienteEdicao";
 import { MensagemUsuario } from "../../../components/MensagemUsuario";
+import { OrdemServicoCriacao } from "../../../components/OrdemServico/OrdemServicoCriacao";
 import { TipoAutomovelCriacao } from "../../../components/TipoAutomovel/TipoAutomovelCriacao";
 import { TipoAutomovelEdicao } from "../../../components/TipoAutomovel/TipoAutomovelEdicao";
 import { requestDelete, requestGet } from "../../../shared/Api/Api";
@@ -44,7 +45,6 @@ export const OrdemServico = () => {
         await requestGet(endereco).then(
             async (resposta) => {
                 const response = await resposta.data;
-                console.log(response)
                 setRowData(response)
                 setActualData(response)
             }
@@ -111,7 +111,7 @@ export const OrdemServico = () => {
                 </div>
             </div>
             {showEdition ? (<ClienteEdicao show={showEdition} id={actualId} onClose={() => setShowEdition(false)} />) : null}
-            {showCreation ? (<ClienteCriacao show={showCreation} onClose={() => setShowCreation(false)} />) : null}
+            {showCreation ? (<OrdemServicoCriacao show={showCreation} onClose={() => setShowCreation(false)} />) : null}
 
         </>
 
