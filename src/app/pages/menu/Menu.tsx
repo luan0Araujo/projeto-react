@@ -14,7 +14,7 @@ export const Menu = () => {
     }
 
     return (
-        <div>
+        <>
             <Nav defaultActiveKey="/ordem" as="ul" className='menu'>
                 <Nav.Item as="li">
                     <Nav.Link href="/ordem-servico">Ordem Serviço</Nav.Link>
@@ -59,6 +59,6 @@ export const Menu = () => {
             </ul> */}
 
 
-        </div>
+        </>
     );
 }
