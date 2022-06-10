@@ -9,6 +9,7 @@ import { OrdemProcedimentos } from "./OrdemProcedimentos";
 export const OrdemServico = () => {
 
     const {register, handleSubmit, setValue} = useForm();
+    const [ordemStatus, setOrdemStatus] = useState([])
     const [listAuto, setListAuto] = useState([])
     const [msg, setMsg] = useState();
     const [edit, setEdit] = useState(true)
@@ -27,8 +28,14 @@ export const OrdemServico = () => {
 
     useEffect(() => {
         automovelList()
-        
+        status()
     },[])
+
+    const status = async () => {
+        const resposta = await requestGet('/os/status')
+
+        setOrdemStatus(resposta.data)   
+    }
 
     const automovelList = async () => {
         const resposta = await requestGet('/automovel')
@@ -48,7 +55,8 @@ export const OrdemServico = () => {
     const onSelectionChanged = async (selecionado:any) => {
         
         setSelecionado(selecionado[0].id)
-
+        
+        setValue("statusId", selecionado[0].status.description)
         setValue("automovelId", selecionado[0].automovel.plate)
         setValue("descricao", selecionado[0].descricao)
         setValue("valorTotal", selecionado[0].valorTotal)
@@ -57,8 +65,45 @@ export const OrdemServico = () => {
         setInputLock(true)  
         
     }
-    const onSubmit = async (data: any) => {
+
+    const onSubmitProcedimentos = async (data: any) => {
+        console.log(selecionado)
+        data = data + selecionado
         
+        if(typeOrdem === 'Procedimentos'){
+            console.log('Procedimentos',data)
+            /*
+            const resposta = await requestPost("/os/procedimentos",data)
+
+            if (resposta.status === 201){
+                mensagemUsuario('Criado com Sucesso', 'success')
+            }
+            else {
+                mensagemUsuario(`Erro ${resposta.data.error}`, 'error')
+            }*/
+        }
+        else{
+            console.log('PEÇA',data)
+            /*
+            const resposta = await requestPost("/os/pecas",data)
+            if (resposta.status === 201){
+                mensagemUsuario('Criado com Sucesso', 'success')
+            }
+            else {
+                mensagemUsuario(`Erro ${resposta.data.error}`, 'error')
+            }*/
+            
+        }
+
+    }
+    const onSubmit = async (data: any) => {
+        const automovelId:any =  listAuto.filter((e:any) => e.plate === data.automovelId)
+        const statusId:any = ordemStatus.filter((e:any) => e.description === data.statusId)
+
+        data.automovelId = automovelId[0].id
+        data.statusId = statusId[0].id
+        
+        console.log(data)
         const resposta = await requestPost("/os",data)
     
         if (resposta.status === 201){
@@ -85,6 +130,16 @@ export const OrdemServico = () => {
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label>
+                    <span>Status </span>
+                    <select {...register("statusId")} disabled={inputLock}>
+                        <option></option>
+                        {
+                            ordemStatus.map(({description}) => {return <option>{description}</option>})
+                        }
+                    </select>
+                </label>
+
+                <label>
                     <span>Automovel </span>
                     <select {...register("automovelId")} disabled={inputLock}>
                         <option></option>
@@ -105,7 +160,7 @@ export const OrdemServico = () => {
 
 
                 {edit ? <button>Registrar</button> : true}
-                {typeOrdem ? <OrdemProcedimentos type={typeOrdem} ordemServicoId={selecionado} ></OrdemProcedimentos> : false}
+                {typeOrdem ? <OrdemProcedimentos onSubmitProcedimentos={onSubmitProcedimentos}></OrdemProcedimentos> : false}
                 
             </form>
             

@@ -56,22 +56,22 @@ export const OrdemProcedimentos = (props:any) => {
     
     <div>
         {visible && ( <div className={type}>{msg}</div>)}
-           <form onSubmit={handleSubmit(onSubmit)}>
+           <form onSubmit={handleSubmit(props.onSubmitProcedimentos)}>
 
             <label >
                 <span>Descrição</span>
-                <input {...register("description")} required/>
+                <input {...register("description")} />
             </label>
             <label>
                 <span>Valor</span>
-                <input {...register("unit_value")}  required/>
+                <input {...register("unit_value")}  />
             </label>
             <label>
                 <span>Quantidade</span>
-                <input {...register("amount")}  required/>
+                <input {...register("amount")}  />
             </label>
 
-            <button type="submit">Registrar</button>
+            <button>Registrar</button>
         </form> 
     </div>
 
