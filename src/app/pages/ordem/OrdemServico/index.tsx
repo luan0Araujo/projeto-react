@@ -4,6 +4,7 @@ import { Button, Table } from "react-bootstrap";
 import { ClienteCriacao } from "../../../components/Clientes/ClienteCriacao";
 import { ClienteEdicao } from "../../../components/Clientes/ClienteEdicao";
 import { MensagemUsuario } from "../../../components/MensagemUsuario";
+import { OrdemProcedimentos } from "../../../components/OrdemServico/OrdemProcedimentos";
 import { OrdemServicoCriacao } from "../../../components/OrdemServico/OrdemServicoCriacao";
 import { TipoAutomovelCriacao } from "../../../components/TipoAutomovel/TipoAutomovelCriacao";
 import { TipoAutomovelEdicao } from "../../../components/TipoAutomovel/TipoAutomovelEdicao";
@@ -11,6 +12,7 @@ import { requestDelete, requestGet } from "../../../shared/Api/Api";
 import { columnDefsCliente } from "../../../shared/constants/columnsDefsCliente";
 import { columnsDefsOs } from "../../../shared/constants/columnsDefsOs";
 import { Menu } from "../../menu/Menu";
+
 
 export const OrdemServico = () => {
 
@@ -21,6 +23,7 @@ export const OrdemServico = () => {
 
     const [showEdition, setShowEdition] = useState(false);
     const [showCreation, setShowCreation] = useState(false);
+    const [ordemProcedimento, setOrdemProcedimento] = useState(false)
 
     const [messageVisible, setMessageVisible] = useState(false);
     const [msg, setMsg] = useState<string>('');
@@ -102,6 +105,7 @@ export const OrdemServico = () => {
                                             <td>{res["createdAt"]}</td>
                                             <td><Button variant="warning" onClick={() => {setShowEdition(true); setActualId(res["id"])}}>✎ Editar</Button></td>
                                             <td><Button variant="danger" onClick={() => excluirCliente(res["id"])}>&#xE15C; Excluir</Button></td>
+                                            <td><Button variant="warning" onClick={() => {setOrdemProcedimento(true); setActualId(res["id"])}}>✎ Ordem</Button></td>
                                         </tr>
                                     })
                                 }
@@ -110,9 +114,11 @@ export const OrdemServico = () => {
                     </div>
                 </div>
             </div>
+
+            
             {showEdition ? (<ClienteEdicao show={showEdition} id={actualId} onClose={() => setShowEdition(false)} />) : null}
             {showCreation ? (<OrdemServicoCriacao show={showCreation} onClose={() => setShowCreation(false)} />) : null}
-
+            {ordemProcedimento ? (<OrdemProcedimentos show={ordemProcedimento} id={actualId} onClose={() => setOrdemProcedimento(false)} />) : null}
         </>
 
     );
